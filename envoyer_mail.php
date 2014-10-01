@@ -2,11 +2,19 @@
 $destinataire = "testemail@toutestfacile.com";
 $expediteur   = "moi@monsite.com";
 $reponse      = $expediteur;
-echo "Ce script envoie un mail à $destinataire ".
-     "en précisant que l'expediteur est $expediteur ".
-     "et que la réponse doit être envoyée à $reponse";
+
+echo "Ce script envoie un mail au format HTML à $destinataire";
+$codehtml=
+"<html><body>" .
+"<h1>Test Email</h1>".
+"<b><u>Ceci est un document HTML</u></b><br>" .
+"Avec differentes tailles de caractères et ".
+    "<font color=\"red\">couleurs</font>" .
+"</body></html>";
 mail($destinataire,
-     "test email 1bis",
-     "merci pour ton tutorial",
-     "From: $expediteur\r\nReply-To: $reponse");
+     "Email au format HTML",
+     $codehtml,
+     "From: $expediteur\r\n".
+        "Reply-To: $reponse\r\n".
+        "Content-Type: text/html; charset=\"iso-8859-1\"\r\n");
 ?>
